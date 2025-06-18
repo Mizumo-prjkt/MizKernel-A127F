@@ -12,7 +12,9 @@ export LLVM=1
 # make ARCH=arm64 exynos850-a12snsxx_defconfig
 # make ARCH=arm64 -j64
 
-
+submodule_summon() {
+    git submodule update --init --recursive
+}
 
 build_kernel() {
     make clean && make mrproper
@@ -26,13 +28,16 @@ menuconfig_summon() {
 
 case "$1" in
     "build")
-        build_kernel
+        if [ "$2" == "-submodule_summon" ]; then
+            submodule_summon
+        fi
+            build_kernel
         ;;
     "menuconfig")
         menuconfig_summon
         ;;
     *)
-        echo "Usage: $0 {build|menuconfig}"
+        echo "Usage: $0 {build (-submodule_summon)|menuconfig}"
         exit 1
         ;;
 esac
