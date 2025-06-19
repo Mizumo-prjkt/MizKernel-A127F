@@ -11,10 +11,6 @@
 #include <linux/module.h>
 #include <linux/vmalloc.h>
 
-// MizProject/Mizumo-prjkt specific workaround on issue of
-// reference error
-#include <soc/samsung/arg_freqs.h>
-
 #define ALIGNMENT_SIZE	 4
 
 #define S5P_VA_ECT (VMALLOC_START + 0xF6000000 + 0x02D00000)

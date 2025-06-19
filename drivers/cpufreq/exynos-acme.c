@@ -32,10 +32,6 @@
 #include <soc/samsung/exynos-cpupm.h>
 #include <soc/samsung/exynos-alt.h>
 
-// Mizumo-prjkt defined Library
-// Fixes extern symbol issue
-#include <soc/samsung/arg_freqs.h>
-
 #include "exynos-acme.h"
 #include "exynos-ufc.h"
 
@@ -1377,7 +1373,7 @@ static int init_dm(struct exynos_cpufreq_domain *domain,
 /*physwizz underclocking*/
 /*Underclocking little cores to 130MHz*/
 /*Underclocking it further to even prolong device power (in theory)*/
-unsigned long arg_cpu_min_c1 = 130000; 
+static unsigned long arg_cpu_min_c1 = 130000; 
 static int __init cpufreq_read_cpu_min_c1(char *cpu_min_c1) /*integer remains in memory after function call*/
 {
 	unsigned long ui_khz;
@@ -1449,8 +1445,7 @@ __setup("mif_min=", cpufreq_read_mif_min);
 
 /*Chatur, Carlos Burero, physwizz & SUFandom (Now Mizumo-prjkt) */
 /*Overclocking little cores to 2.1GHz*/
-// static unsigned long arg_cpu_max_c1 = 2100000
-unsigned long arg_cpu_max_c1 = 2100000; /*max_cpu_freq=2.1 GHz for little cores*/
+static unsigned long arg_cpu_max_c1 = 2100000; /*max_cpu_freq=2.1 GHz for little cores*/
 
 static int __init cpufreq_read_cpu_max_c1(char *cpu_max_c1) /*integer remains in memory after function call*/
 {
