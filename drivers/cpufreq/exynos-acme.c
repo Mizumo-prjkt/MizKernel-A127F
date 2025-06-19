@@ -1407,41 +1407,6 @@ static __init int cpufreq_read_cpu_min_c2(char *cpu_min_c2)
 }
 __setup("cpu_min_c2=", cpufreq_read_cpu_min_c2);
 
-/*Underclocking gpu to 377MHz*/
-unsigned long arg_gpu_min = 377000;
- 
-static __init int cpufreq_read_gpu_min(char *gpu_min)
-{
-	unsigned long ui_khz;
-	int ret;
-
-	ret = kstrtoul(gpu_min, 0, &ui_khz);
-	if (ret)
-		return -EINVAL;
-
-	arg_gpu_min = ui_khz;
-	printk("gpu_min=%lu\n", arg_gpu_min);
-	return ret;
-}
-__setup("gpu_min=", cpufreq_read_gpu_min);
-
-/*Underclocking mif to 421MHz*/
-unsigned long arg_mif_min = 421000;
-
-static __init int cpufreq_read_mif_min(char *mif_min)
-{
-	unsigned long ui_khz;
-	int ret;
-
-	ret = kstrtoul(mif_min, 0, &ui_khz);
-	if (ret)
-		return -EINVAL;
-
-	arg_mif_min = ui_khz;
-	printk("mif_min=%lu\n", arg_mif_min);
-	return ret;
-}
-__setup("mif_min=", cpufreq_read_mif_min);
 
 /*Chatur, Carlos Burero, physwizz & SUFandom (Now Mizumo-prjkt) */
 /*Overclocking little cores to 2.1GHz*/
