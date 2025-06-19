@@ -1383,7 +1383,7 @@ static int __init cpufreq_read_cpu_min_c1(char *cpu_min_c1) /*integer remains in
 	if (ret)
 		return -EINVAL;
 
-	arg_cpu_min_c1 = ui_khz;More actions
+	arg_cpu_min_c1 = ui_khz;
 	printk("cpu_min_c1=%lu\n", arg_cpu_min_c1); 
 	return ret;
 }
@@ -1532,7 +1532,7 @@ static __init int init_domain(struct exynos_cpufreq_domain *domain,
 	if (!of_property_read_u32(dn, "min-freq", &val))
 		domain->min_freq = max(domain->min_freq, val);
 
-	/*id==0 for little  id==1 for big*/Add commentMore actions
+	/*id==0 for little  id==1 for big*/
 
 	if (domain->id == 0) {
 		domain->max_freq = arg_cpu_max_c1;
