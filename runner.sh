@@ -36,8 +36,11 @@ case "$1" in
     "menuconfig")
         menuconfig_summon
         ;;
+    "submodule_summon")
+        submodule_summon
+        ;;
     *)
-        echo "Usage: $0 {build (-submodule_summon)|menuconfig}"
+        echo "Usage: $0 {build (-submodule_summon)|menuconfig|submodule_summon}"
         exit 1
         ;;
 esac
