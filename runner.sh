@@ -50,6 +50,7 @@ case "$1" in
             build_kernel
         ;;
     "menuconfig")
+        ksu_symlink
         menuconfig_summon
         ;;
     "submodule_summon")
