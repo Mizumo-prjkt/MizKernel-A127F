@@ -1012,6 +1012,15 @@ void tick_broadcast(const struct cpumask *mask)
 }
 #endif
 
+static const char *system_state_show[SYSTEM_END] = {
+	"SYSTEM_BOOTING",
+	"SYSTEM_SCHEDULING",
+	"SYSTEM_RUNNING",
+	"SYSTEM_HALT",
+	"SYSTEM_POWER_OFF",
+	"SYSTEM_RESTART",
+};
+
 /*
  * The number of CPUs online, not counting this CPU (which may not be
  * fully online and so not counted in num_online_cpus()).
@@ -1027,8 +1036,8 @@ void smp_send_stop(void)
 {
 	unsigned long timeout;
 
-	if (num_other_online_cpus()) {
-		cpumask_t mask;
+	cpumask_t mask;
+	int cpu;
 
 	if (num_online_cpus() > 1) {
 		cpumask_copy(&mask, cpu_online_mask);
